@@ -2,6 +2,8 @@ package com.example.client.service;
 
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,6 +57,14 @@ public class ControllerService {
         Integer number = random.nextInt(14);
         number += 6;
         return number;
+    }
+
+    public BigDecimal convertCurrency(BigDecimal usd){
+
+        BigDecimal euro = usd.multiply(new BigDecimal(0.8250)).setScale(2, RoundingMode.CEILING);
+
+        return euro;
+
     }
 }
 
